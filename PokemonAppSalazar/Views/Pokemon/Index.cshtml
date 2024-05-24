@@ -1,0 +1,19 @@
+﻿@model PokemonAppSalazar.Controllers.PokemonList
+
+<h2>Pokémon List</h2>
+
+<ul>
+    @foreach (var pokemon in Model.Results)
+    {
+        <li>
+            <a asp-controller="Pokemon" asp-action="Details" asp-route-name="@pokemon.Name">@pokemon.Name</a>
+        </li>
+    }
+</ul>
+
+@* Pagination links *@
+@if (Model.Results.Count == 20)
+{
+    <a asp-controller="Pokemon" asp-action="Index" asp-route-page="1">First</a>
+    <a asp-controller="Pokemon" asp-action="Index" asp-route-page="@(Model.Results.Count + 1)">Next</a>
+}
